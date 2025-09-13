@@ -3,7 +3,7 @@ package com.otavio.clientes.dto;
 public class ClienteDto {
     private String nome;
 
-    ClienteDto(String nome){
+    public ClienteDto(String nome){
         this.nome = nome;
     }
 
