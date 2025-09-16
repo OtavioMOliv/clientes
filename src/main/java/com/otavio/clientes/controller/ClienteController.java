@@ -1,6 +1,8 @@
 package com.otavio.clientes.controller;
 
 import com.otavio.clientes.dto.ClienteDto;
+import com.otavio.clientes.service.ClienteService;
+import com.otavio.clientes.service.impl.ClienteServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -9,14 +11,17 @@ import java.util.List;
 @RestController
 @RequestMapping("/clientes")
 @CrossOrigin("*")
-public class ClientesController {
+public class ClienteController {
+
+    ClienteService clienteService;
+
+    ClienteController(ClienteServiceImpl clienteServiceImpl){
+        this.clienteService = clienteServiceImpl;
+    }
 
     @GetMapping("/{id}")
-    public String getClientes(@PathVariable Long id, @RequestParam(required = false, defaultValue = "false" ) boolean showAllFields){
-        if(showAllFields){
-            return "o id do cliente eh " + id;
-        }
-        return "voce passou um id";
+    public ClienteDto getCliente(@PathVariable Long id){
+        return new ClienteDto(clienteService.getClienteById(id));
     }
 
     @PostMapping
