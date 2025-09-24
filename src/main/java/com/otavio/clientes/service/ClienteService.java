@@ -4,4 +4,6 @@ import com.otavio.clientes.entity.Cliente;
 
 public interface ClienteService {
     Cliente getClienteById(Long id);
+
+    Cliente createCliente(Cliente cliente);
 }

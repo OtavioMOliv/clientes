@@ -20,4 +20,9 @@ public class ClienteServiceImpl implements ClienteService {
         return clienteRepository.findById(id)
                 .orElseThrow(()->new EntityNotFoundException(ENTITY_NOT_FOUND + id));
     }
+
+    @Override
+    public Cliente createCliente(Cliente cliente) {
+        return clienteRepository.save(cliente);
+    }
 }

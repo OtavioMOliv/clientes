@@ -1,6 +1,7 @@
 package com.otavio.clientes.controller;
 
 import com.otavio.clientes.dto.ClienteDto;
+import com.otavio.clientes.entity.Cliente;
 import com.otavio.clientes.service.ClienteService;
 import com.otavio.clientes.service.impl.ClienteServiceImpl;
 import org.springframework.web.bind.annotation.*;
@@ -25,15 +26,13 @@ public class ClienteController {
     }
 
     @PostMapping
-    public String createCliente(@RequestBody ClienteDto clienteDto){
-        return "Cliente enviado " + clienteDto.getNome();
+    public ClienteDto createCliente(@RequestBody ClienteDto clienteDto){
+        return new ClienteDto(clienteService.createCliente(new Cliente(clienteDto)));
     }
 
     @GetMapping
     public List<ClienteDto> getAll(){
         ArrayList<ClienteDto> clientes = new ArrayList<>();
-        clientes.add(new ClienteDto("Andre"));
-        clientes.add(new ClienteDto("Otavio"));
         return clientes;
     }
 }
