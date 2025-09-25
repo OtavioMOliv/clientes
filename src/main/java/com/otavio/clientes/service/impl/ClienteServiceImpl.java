@@ -1,5 +1,6 @@
 package com.otavio.clientes.service.impl;
 
+import com.otavio.clientes.config.exception.ResourceNotFoundException;
 import com.otavio.clientes.entity.Cliente;
 import com.otavio.clientes.repository.ClienteRepository;
 import com.otavio.clientes.service.ClienteService;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
-    public static final String ENTITY_NOT_FOUND = "Entidade não encontrada";
+    public static final String ENTITY_NOT_FOUND = "Entidade não encontrada ";
     ClienteRepository clienteRepository;
 
     ClienteServiceImpl(ClienteRepository clienteRepository){
@@ -18,7 +19,7 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public Cliente getClienteById(Long id) {
         return clienteRepository.findById(id)
-                .orElseThrow(()->new EntityNotFoundException(ENTITY_NOT_FOUND + id));
+                .orElseThrow(()->new ResourceNotFoundException(ENTITY_NOT_FOUND + id));
     }
 
     @Override
