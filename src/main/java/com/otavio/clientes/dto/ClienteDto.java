@@ -6,7 +6,7 @@ public class ClienteDto {
     private Long id;
     private String nome;
 
-    ClienteDto(){}
+    public ClienteDto(){}
 
     public ClienteDto(Cliente cliente){
         this.id = cliente.getId();

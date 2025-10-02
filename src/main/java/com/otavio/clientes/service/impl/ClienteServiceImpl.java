@@ -7,6 +7,8 @@ import com.otavio.clientes.service.ClienteService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ClienteServiceImpl implements ClienteService {
     public static final String ENTITY_NOT_FOUND = "Entidade não encontrada ";
@@ -25,5 +27,10 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public Cliente createCliente(Cliente cliente) {
         return clienteRepository.save(cliente);
+    }
+
+    @Override
+    public List<Cliente> getAllClientes() {
+        return clienteRepository.findAll();
     }
 }
