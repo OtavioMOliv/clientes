@@ -1,10 +1,10 @@
 package com.otavio.clientes.service.impl;
 
 import com.otavio.clientes.config.exception.ResourceNotFoundException;
+import com.otavio.clientes.dto.ClienteDto;
 import com.otavio.clientes.entity.Cliente;
 import com.otavio.clientes.repository.ClienteRepository;
 import com.otavio.clientes.service.ClienteService;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,5 +32,16 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public List<Cliente> getAllClientes() {
         return clienteRepository.findAll();
+    }
+
+    @Override
+    public Cliente updateCliente(Long id, Cliente cliente) {
+        cliente.setId(id);
+        return  clienteRepository.save(cliente);
+    }
+
+    @Override
+    public void deleteCliente(Long id) {
+         clienteRepository.deleteById(id);
     }
 }
