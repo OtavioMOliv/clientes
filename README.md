@@ -1,7 +1,21 @@
 # Clientes API
 
 ## Comandos docker
+```
 
+```
+
+```
+docker build -t clientes:1.0 .
+```
+
+```
+docker run --rm -p 8080:8080 --name clientes clientes:1.0
+```
+
+```
+$ docker logs clientes
+```
 
 ```
 docker run -p 8080:8080 --name clientes clientes:1.0
