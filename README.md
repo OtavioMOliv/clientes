@@ -1,5 +1,13 @@
 # Clientes API
 
+## Comandos docker
+
+
+```
+docker run -p 8080:8080 --name clientes clientes:1.0
+docker build -t clientes:1.0 .
+```
+
 ## Controller
 
 ### Get by Id
