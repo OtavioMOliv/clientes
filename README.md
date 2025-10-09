@@ -1,9 +1,6 @@
 # Clientes API
 
 ## Comandos docker
-```
-
-```
 
 ```
 docker build -t clientes:1.0 .
