@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/clientesdb
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update   # DEV: cria/atualiza schema. Em prod use flyway/liquibase.
+    properties:
+      hibernate.jdbc.lob.non_contextual_creation: true
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+  sql:
+    init:
+      mode: never        # se quiser rodar schema.sql/data.sql, troque para always
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

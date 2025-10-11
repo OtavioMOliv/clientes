@@ -19,6 +19,17 @@ docker run -p 8080:8080 --name clientes clientes:1.0
 docker build -t clientes:1.0 .
 ```
 
+### Docker Compose
+```
+docker compose up -d
+docker compose logs -f app
+docker compose logs -f db
+docker compose down
+docker compose exec app printenv | grep SPRING_DATASOURCE
+docker compose exec db psql -U postgres
+docker compose exec db psql -U postgres -d clientesdb -c "select * from cliente;"
+```
+
 ## Controller
 
 ### Get by Id
