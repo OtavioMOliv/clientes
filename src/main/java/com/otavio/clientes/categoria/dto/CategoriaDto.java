@@ -1,16 +1,16 @@
-package com.otavio.clientes.dto;
+package com.otavio.clientes.categoria.dto;
 
-import com.otavio.clientes.entity.Cliente;
+import com.otavio.clientes.categoria.entity.Categoria;
 
-public class ClienteDto {
+public class CategoriaDto {
     private Long id;
     private String nome;
 
-    public ClienteDto(){}
+    public CategoriaDto(){}
 
-    public ClienteDto(Cliente cliente){
-        this.id = cliente.getId();
-        this.nome = cliente.getNome();
+    public CategoriaDto(Categoria categoria){
+        this.id = categoria.getId();
+        this.nome = categoria.getNome();
     }
 
     public void setId(Long id) {

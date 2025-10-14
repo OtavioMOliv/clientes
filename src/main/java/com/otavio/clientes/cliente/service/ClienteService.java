@@ -1,7 +1,6 @@
-package com.otavio.clientes.service;
+package com.otavio.clientes.cliente.service;
 
-import com.otavio.clientes.dto.ClienteDto;
-import com.otavio.clientes.entity.Cliente;
+import com.otavio.clientes.cliente.entity.Cliente;
 
 import java.util.List;
 

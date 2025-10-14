@@ -1,12 +1,11 @@
-package com.otavio.clientes.controller;
+package com.otavio.clientes.cliente.controller;
 
-import com.otavio.clientes.dto.ClienteDto;
-import com.otavio.clientes.entity.Cliente;
-import com.otavio.clientes.service.ClienteService;
-import com.otavio.clientes.service.impl.ClienteServiceImpl;
+import com.otavio.clientes.cliente.dto.ClienteDto;
+import com.otavio.clientes.cliente.entity.Cliente;
+import com.otavio.clientes.cliente.service.ClienteService;
+import com.otavio.clientes.cliente.service.impl.ClienteServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

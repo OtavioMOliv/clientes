@@ -1,10 +1,10 @@
-package com.otavio.clientes.service.impl;
+package com.otavio.clientes.cliente.service.impl;
 
 import com.otavio.clientes.config.exception.ResourceNotFoundException;
-import com.otavio.clientes.dto.ClienteDto;
-import com.otavio.clientes.entity.Cliente;
-import com.otavio.clientes.repository.ClienteRepository;
-import com.otavio.clientes.service.ClienteService;
+import com.otavio.clientes.cliente.dto.ClienteDto;
+import com.otavio.clientes.cliente.entity.Cliente;
+import com.otavio.clientes.cliente.repository.ClienteRepository;
+import com.otavio.clientes.cliente.service.ClienteService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
