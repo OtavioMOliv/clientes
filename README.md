@@ -29,6 +29,12 @@ docker compose exec app printenv | grep SPRING_DATASOURCE
 docker compose exec db psql -U postgres
 docker compose exec db psql -U postgres -d clientesdb -c "select * from cliente;"
 ```
+## Git para release
+```
+git tag -a v1.0.0 -m "Release v1.0.0"
+git push origin --tags
+
+```
 
 ## Controller
 
