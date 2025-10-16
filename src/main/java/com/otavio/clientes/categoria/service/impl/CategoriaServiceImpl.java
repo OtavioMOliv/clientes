@@ -1,7 +1,6 @@
 package com.otavio.clientes.categoria.service.impl;
 
 import com.otavio.clientes.config.exception.ResourceNotFoundException;
-import com.otavio.clientes.categoria.dto.CategoriaDto;
 import com.otavio.clientes.categoria.entity.Categoria;
 import com.otavio.clientes.categoria.repository.CategoriaRepository;
 import com.otavio.clientes.categoria.service.CategoriaService;
@@ -12,9 +11,9 @@ import java.util.List;
 @Service
 public class CategoriaServiceImpl implements CategoriaService {
     public static final String ENTITY_NOT_FOUND = "Entidade não encontrada ";
-    CategoriaRepository CategoriaRepository;
+    CategoriaRepository categoriaRepository;
 
-    CategoriaServiceImpl(CategoriaRepository CategoriaRepository){
+    CategoriaServiceImpl(CategoriaRepository categoriaRepository){
         this.categoriaRepository = categoriaRepository;
     }
 

@@ -1,6 +1,6 @@
 package com.otavio.clientes.categoria.repository;
 
-import com.otavio.categorias.categoria.entity.Categoria;
+import com.otavio.clientes.categoria.entity.Categoria;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

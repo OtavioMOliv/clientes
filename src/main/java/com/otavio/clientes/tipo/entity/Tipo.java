@@ -1,24 +1,24 @@
-package com.otavio.clientes.categoria.entity;
+package com.otavio.clientes.tipo.entity;
 
-import com.otavio.clientes.categoria.dto.CategoriaDto;
+import com.otavio.clientes.tipo.dto.TipoDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Categoria {
+public class Tipo {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String nome;
 
-    public Categoria(){}
+    public Tipo(){}
 
-    public Categoria(CategoriaDto categoriaDto) {
-        this.id = categoriaDto.getId();
-        this.nome = categoriaDto.getNome();
+    public Tipo(TipoDto tipoDto) {
+        this.id = tipoDto.getId();
+        this.nome = tipoDto.getNome();
     }
 
     public String getNome() {
@@ -39,7 +39,7 @@ public class Categoria {
 
     @Override
     public String toString() {
-        return "Categoria{" +
+        return "Tipo{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 '}';
