@@ -1,10 +1,9 @@
 package com.otavio.clientes.cliente.entity;
 
+import com.otavio.clientes.categoria.dto.CategoriaDto;
+import com.otavio.clientes.categoria.entity.Categoria;
 import com.otavio.clientes.cliente.dto.ClienteDto;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Cliente {
@@ -14,11 +13,27 @@ public class Cliente {
     private Long id;
     private String nome;
 
+    @ManyToOne//(fetch = FetchType.LAZY)
+    @JoinColumn(name="categoria_id")
+    private Categoria categoria;
+
     public Cliente(){}
 
     public Cliente(ClienteDto clienteDto) {
+        if (clienteDto.getCategoria() == null){
+            this.categoria = new Categoria();
+        }
         this.id = clienteDto.getId();
         this.nome = clienteDto.getNome();
+        this.categoria = new Categoria(clienteDto.getCategoria());
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     public String getNome() {
@@ -42,7 +57,7 @@ public class Cliente {
         return "Cliente{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
+                ", categoria=" + categoria +
                 '}';
     }
-
 }

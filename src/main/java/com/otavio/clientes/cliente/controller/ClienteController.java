@@ -1,5 +1,7 @@
 package com.otavio.clientes.cliente.controller;
 
+import com.otavio.clientes.categoria.dto.CategoriaDto;
+import com.otavio.clientes.categoria.entity.Categoria;
 import com.otavio.clientes.cliente.dto.ClienteDto;
 import com.otavio.clientes.cliente.entity.Cliente;
 import com.otavio.clientes.cliente.service.ClienteService;
@@ -26,7 +28,18 @@ public class ClienteController {
 
     @PostMapping
     public ClienteDto createCliente(@RequestBody ClienteDto clienteDto){
-        return new ClienteDto(clienteService.createCliente(new Cliente(clienteDto)));
+        Cliente cliente1 = new Cliente(clienteDto);
+        Cliente cliente = clienteService.createCliente(cliente1);
+        System.out.println(cliente.getCategoria().getId());
+        CategoriaDto categoria = new CategoriaDto();
+        categoria.setId(cliente.getCategoria().getId());
+        categoria.setNome(cliente.getCategoria().getNome());
+        ClienteDto clienteRetorno = new ClienteDto();
+        clienteRetorno.setCategoriaDto(categoria);
+        clienteRetorno.setNome(cliente.getNome());
+        clienteRetorno.setId(cliente.getId());
+
+        return clienteRetorno;
     }
 
     //method reference
