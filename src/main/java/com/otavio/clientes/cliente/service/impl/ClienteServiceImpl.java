@@ -16,8 +16,6 @@ public class ClienteServiceImpl implements ClienteService {
     ClienteRepository clienteRepository;
     CategoriaRepository categoriaRepository;
 
-    ClienteServiceImpl(){}
-
     ClienteServiceImpl(ClienteRepository clienteRepository, CategoriaRepository categoriaRepository){
         this.categoriaRepository = categoriaRepository;
         this.clienteRepository = clienteRepository;
