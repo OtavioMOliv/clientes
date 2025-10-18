@@ -1,5 +1,6 @@
 package com.otavio.clientes.cliente.service.impl;
 
+import com.otavio.clientes.categoria.repository.CategoriaRepository;
 import com.otavio.clientes.config.exception.ResourceNotFoundException;
 import com.otavio.clientes.cliente.dto.ClienteDto;
 import com.otavio.clientes.cliente.entity.Cliente;
@@ -13,8 +14,12 @@ import java.util.List;
 public class ClienteServiceImpl implements ClienteService {
     public static final String ENTITY_NOT_FOUND = "Entidade não encontrada ";
     ClienteRepository clienteRepository;
+    CategoriaRepository categoriaRepository;
 
-    ClienteServiceImpl(ClienteRepository clienteRepository){
+    ClienteServiceImpl(){}
+
+    ClienteServiceImpl(ClienteRepository clienteRepository, CategoriaRepository categoriaRepository){
+        this.categoriaRepository = categoriaRepository;
         this.clienteRepository = clienteRepository;
     }
 
@@ -26,6 +31,12 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public Cliente createCliente(Cliente cliente) {
+        if(cliente.getCategoria() != null && cliente.getCategoria().getId() != null){
+            cliente.setCategoria(categoriaRepository.getReferenceById(cliente.getCategoria().getId()));
+        }else{
+            // TODO criar uma exceção caso categoria seja obrigatório
+            cliente.setCategoria(null);
+        }
         return clienteRepository.save(cliente);
     }
 

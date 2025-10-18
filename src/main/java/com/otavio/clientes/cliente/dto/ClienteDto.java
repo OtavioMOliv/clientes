@@ -11,11 +11,11 @@ public class ClienteDto {
     public ClienteDto(){}
 
     public ClienteDto(Cliente cliente){
-        if (cliente.getCategoria() == null){
-            this.categoria = new CategoriaDto();
-        }
         this.id = cliente.getId();
         this.nome = cliente.getNome();
+        if (cliente.getCategoria() != null){
+            this.categoria = new CategoriaDto(cliente.getCategoria());
+        }
 
     }
 
@@ -23,8 +23,8 @@ public class ClienteDto {
         return categoria;
     }
 
-    public void setCategoriaDto(CategoriaDto categoriaDto) {
-        this.categoria = categoriaDto;
+    public void setCategoria(CategoriaDto categoria) {
+        this.categoria = categoria;
     }
 
     public void setId(Long id) {

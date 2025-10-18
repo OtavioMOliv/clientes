@@ -17,29 +17,18 @@ public class ClienteController {
 
     ClienteService clienteService;
 
-    ClienteController(ClienteServiceImpl clienteServiceImpl){
+    ClienteController(ClienteServiceImpl clienteServiceImpl) {
         this.clienteService = clienteServiceImpl;
     }
 
     @GetMapping("/{id}")
-    public ClienteDto getCliente(@PathVariable Long id){
+    public ClienteDto getCliente(@PathVariable Long id) {
         return new ClienteDto(clienteService.getClienteById(id));
     }
 
     @PostMapping
-    public ClienteDto createCliente(@RequestBody ClienteDto clienteDto){
-        Cliente cliente1 = new Cliente(clienteDto);
-        Cliente cliente = clienteService.createCliente(cliente1);
-        System.out.println(cliente.getCategoria().getId());
-        CategoriaDto categoria = new CategoriaDto();
-        categoria.setId(cliente.getCategoria().getId());
-        categoria.setNome(cliente.getCategoria().getNome());
-        ClienteDto clienteRetorno = new ClienteDto();
-        clienteRetorno.setCategoriaDto(categoria);
-        clienteRetorno.setNome(cliente.getNome());
-        clienteRetorno.setId(cliente.getId());
-
-        return clienteRetorno;
+    public ClienteDto createCliente(@RequestBody ClienteDto clienteDto) {
+        return new ClienteDto(clienteService.createCliente(new Cliente(clienteDto)));
     }
 
     //method reference
@@ -52,12 +41,12 @@ public class ClienteController {
     }
 
     @PutMapping("/{id}")
-    public ClienteDto updateCliente (@RequestBody ClienteDto clienteDto, @PathVariable Long id){
-        return new ClienteDto (clienteService.updateCliente(id, new Cliente(clienteDto)));
+    public ClienteDto updateCliente(@RequestBody ClienteDto clienteDto, @PathVariable Long id) {
+        return new ClienteDto(clienteService.updateCliente(id, new Cliente(clienteDto)));
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCliente (@PathVariable Long id){
+    public void deleteCliente(@PathVariable Long id) {
         clienteService.deleteCliente(id);
     }
 }

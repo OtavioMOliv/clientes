@@ -13,19 +13,20 @@ public class Cliente {
     private Long id;
     private String nome;
 
-    @ManyToOne//(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="categoria_id")
     private Categoria categoria;
 
     public Cliente(){}
 
     public Cliente(ClienteDto clienteDto) {
-        if (clienteDto.getCategoria() == null){
-            this.categoria = new Categoria();
-        }
         this.id = clienteDto.getId();
         this.nome = clienteDto.getNome();
         this.categoria = new Categoria(clienteDto.getCategoria());
+        if (clienteDto.getCategoria() != null && clienteDto.getCategoria().getId() != null){
+            this.categoria = new Categoria();
+            this.categoria.setId(clienteDto.getCategoria().getId());
+        }
     }
 
     public Categoria getCategoria() {
@@ -57,7 +58,7 @@ public class Cliente {
         return "Cliente{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", categoria=" + categoria +
+                ", categoria=" + (categoria != null ? categoria.getId() : null) +
                 '}';
     }
 }
